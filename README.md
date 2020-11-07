@@ -10,10 +10,17 @@ the data warehouse.
 
 ## Project details
 
-### Data Source    : Amazon S3 is used as a data Source and also to store intermediate transformed data.
-### Processing     : Pyspark is used on EMR Cluster to run the transformations.
-### Data Warehouse : Redshift is used as a data Warehouse where the tables follow the Star schema.
-### Data Pipeline  : Airflow on EC2 is used to orchestrate the data from data source to data warehouse.
+### Data Source:
+Amazon S3 is used as a data Source and also to store intermediate transformed data.
+
+### Processing:
+Pyspark is used on EMR Cluster to run the transformations.
+
+### Data Warehouse: 
+Redshift is used as a data Warehouse where the tables follow the Star schema.
+
+### Data Pipeline:
+Airflow on EC2 is used to orchestrate the data from data source to data warehouse.
 
 
 ## Project Datasets
@@ -42,13 +49,13 @@ Start the AIrflow weberver and toggle to DAG switch to ON for the scheduler to p
 
 
 ## Scenarios
-- Data increase by 100x. 
-    EMR cluster size can be increased to process higher volume of data.
+Data increase by 100x. 
+-  EMR cluster size can be increased to process higher volume of data.
 
 
-- Pipelines would be run on 7am daily. how to update dashboard? would it still work?
-   DAG can be scheduled at 7AM daily as this dag is set to run once everyday. Upon failure of the DAG, emails can be sent to the team notifying about the failures.
+Pipelines would be run on 7am daily. how to update dashboard? would it still work?
+-  DAG can be scheduled at 7AM daily as this dag is set to run once everyday. Upon failure of the DAG, emails can be sent to the team notifying about the failures.
 
 
-- Make it available to 100+ people
-    - Redshift can be scaled to handle heavy workloads and can be run by as many users as required.
+Make it available to 100+ people
+-  Redshift can be scaled to handle heavy workloads and can be run by as many users as required.
