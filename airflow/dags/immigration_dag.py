@@ -30,8 +30,7 @@ dag = DAG('immigration_pipeline',
 #defining the first task to begin execution
 start_task = DummyOperator(task_id = 'Begin Execution',dag=dag)
 
-#Creating a Hook to coonect to EMR
-####CreateSSH Coonection in Airflow
+#Creating a Hook to connect to EMR
 emr_ssh_hook = SSHHook(conn_id='emr_conn_id')
 
 #Task to run ETL from Raw S3 to Transformed S3
@@ -113,6 +112,7 @@ load_airport_table = StageToRedshiftOperator(
     dag=dag
 )
 
+#Data quality task
 data_quality_task = DataQualityOperator(
     task_id='data_quality_task',
     redshift_conn_id='redshift',
@@ -121,6 +121,7 @@ data_quality_task = DataQualityOperator(
     dag=dag
 )
 
+#defining the dependencies
 start_task >> run_emr_task
 run_emr_task >> create_table_operator
 create_table_operator >> load_dates_table
